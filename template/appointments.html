@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Appointments - MediCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Medi<span>Care</span>
+    </div>
+
+
+    <div class="nav-links">
+
+        {% if session.get("role") == "patient" %}
+
+            <a href="/patient">
+                Dashboard
+            </a>
+
+        {% else %}
+
+            <a href="/admin">
+                Dashboard
+            </a>
+
+        {% endif %}
+
+
+        <a href="/doctors">
+            Doctors
+        </a>
+
+
+        <a href="/appointments">
+            Appointments
+        </a>
+
+
+        <a href="/logout" class="nav-btn">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN APPOINTMENT PAGE
+===================================================== -->
+
+<div class="appointment-page">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="appointment-header">
+
+        <h1>
+            Appointments
+        </h1>
+
+
+        {% if session.get("role") == "patient" %}
+
+            <p>
+                View and manage your appointments.
+            </p>
+
+        {% else %}
+
+            <p>
+                View and manage patient appointments.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+
+    <!-- =================================================
+         APPOINTMENTS EXIST
+    ================================================= -->
+
+    {% if appointments %}
+
+
+    <div class="appointment-table-card">
+
+        <div class="appointment-table-wrapper">
+
+
+            <table class="appointment-table">
+
+
+                <!-- =========================
+                     TABLE HEADER
+                ========================== -->
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Doctor
+                        </th>
+
+                        <th>
+                            Specialization
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Time
+                        </th>
+
+                        <th>
+                            Reason
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+
+                        {% if session.get("role") == "doctor"
+                              or session.get("role") == "admin" %}
+
+                            <th>
+                                Actions
+                            </th>
+
+                        {% endif %}
+
+                    </tr>
+
+                </thead>
+
+
+
+                <!-- =========================
+                     TABLE BODY
+                ========================== -->
+
+                <tbody>
+
+
+                {% for appointment in appointments %}
+
+
+                    <tr>
+
+
+                        <!-- APPOINTMENT ID -->
+
+                        <td>
+                            {{ appointment[0] }}
+                        </td>
+
+
+
+                        <!-- PATIENT -->
+
+                        <td>
+                            {{ appointment[1] }}
+                        </td>
+
+
+
+                        <!-- DOCTOR -->
+
+                        <td>
+                            {{ appointment[2] }}
+                        </td>
+
+
+
+                        <!-- SPECIALIZATION -->
+
+                        <td>
+                            {{ appointment[3] }}
+                        </td>
+
+
+
+                        <!-- DATE -->
+
+                        <td>
+                            {{ appointment[4] }}
+                        </td>
+
+
+
+                        <!-- TIME -->
+
+                        <td>
+                            {{ appointment[5] }}
+                        </td>
+
+
+
+                        <!-- REASON -->
+
+                        <td>
+                            {{ appointment[6] }}
+                        </td>
+
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="status status-{{ appointment[7] }}">
+
+                                {{ appointment[7] | capitalize }}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <!-- =================================================
+                             ACTIONS
+                        ================================================= -->
+
+                        {% if session.get("role") == "doctor"
+                              or session.get("role") == "admin" %}
+
+
+                        <td>
+
+                            <div class="appointment-actions">
+
+
+                                <!-- =========================================
+                                     PENDING
+                                ========================================== -->
+
+                                {% if appointment[7] == "pending" %}
+
+
+                                    <a
+                                        href="/update_status/{{ appointment[0] }}/confirmed"
+                                        class="btn btn-success confirm-action"
+                                    >
+                                        Confirm
+                                    </a>
+
+
+                                    <a
+                                        href="/update_status/{{ appointment[0] }}/cancelled"
+                                        class="btn btn-danger cancel-action"
+                                    >
+                                        Cancel
+                                    </a>
+
+
+                                <!-- =========================================
+                                     CONFIRMED
+                                ========================================== -->
+
+                                {% elif appointment[7] == "confirmed" %}
+
+
+                                    <a
+                                        href="/update_status/{{ appointment[0] }}/completed"
+                                        class="btn btn-primary complete-action"
+                                    >
+                                        Complete
+                                    </a>
+
+
+                                    <a
+                                        href="/update_status/{{ appointment[0] }}/cancelled"
+                                        class="btn btn-danger cancel-action"
+                                    >
+                                        Cancel
+                                    </a>
+
+
+                                <!-- =========================================
+                                     COMPLETED
+                                ========================================== -->
+
+                                {% elif appointment[7] == "completed" %}
+
+
+                                    <span class="status status-completed">
+                                        Completed
+                                    </span>
+
+
+                                <!-- =========================================
+                                     CANCELLED
+                                ========================================== -->
+
+                                {% elif appointment[7] == "cancelled" %}
+
+
+                                    <span class="status status-cancelled">
+                                        Cancelled
+                                    </span>
+
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </td>
+
+
+                        {% endif %}
+
+
+                    </tr>
+
+
+                {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         NO APPOINTMENTS
+    ================================================= -->
+
+    {% else %}
+
+
+        <div class="section no-appointments">
+
+
+            {% if session.get("role") == "patient" %}
+
+
+                <h2>
+                    No Appointments Yet
+                </h2>
+
+
+                <p>
+                    You have not booked any appointments yet.
+                </p>
+
+
+                <a
+                    href="/doctors"
+                    class="btn btn-primary"
+                >
+                    Find a Doctor
+                </a>
+
+
+            {% else %}
+
+
+                <h2>
+                    No Appointments Found
+                </h2>
+
+
+                <p>
+                    There are currently no appointments in the system.
+                </p>
+
+
+                <a
+                    href="/doctors"
+                    class="btn btn-secondary"
+                >
+                    View Doctors
+                </a>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        © 2026 MediCare Doctor Appointment System
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

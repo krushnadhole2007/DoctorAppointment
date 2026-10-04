@@ -1,0 +1,1041 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f8fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5edf3;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0b7fab;
+}
+
+.logo span {
+    color: #19a974;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #475569;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #0b7fab;
+}
+
+.nav-btn {
+    background: #0b7fab;
+    color: white !important;
+
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.nav-btn:hover {
+    background: #08698f;
+}
+
+
+/* =========================================
+   HOME PAGE
+========================================= */
+
+.hero {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 70px 8%;
+
+    background:
+        linear-gradient(
+            120deg,
+            #eef9fc 0%,
+            #f8fcfd 55%,
+            #eef8f5 100%
+        );
+}
+
+.hero-content {
+    width: 52%;
+}
+
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    color: #12344d;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #0b8f8a;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #64748b;
+    max-width: 600px;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-card {
+    width: 380px;
+    height: 380px;
+
+    border-radius: 30px;
+
+    background: white;
+
+    box-shadow: 0 20px 50px rgba(31, 78, 100, 0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 110px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: #0b7fab;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #08698f;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: white;
+    color: #0b7fab;
+
+    border: 1px solid #0b7fab;
+}
+
+.btn-secondary:hover {
+    background: #eef9fc;
+}
+
+.btn-success {
+    background: #15966d;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc4c4c;
+    color: white;
+}
+
+
+/* =========================================
+   AUTH PAGES
+========================================= */
+
+.auth-page {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #eef8fc,
+        #f7fbfa
+    );
+}
+
+.auth-card {
+    width: 450px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 15px 40px rgba(25, 65, 85, 0.10);
+}
+
+.auth-card h2 {
+    color: #12344d;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.auth-card .subtitle {
+    color: #64748b;
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   FORMS
+========================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #334155;
+}
+
+.form-control,
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d6e1e8;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #1f2937;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0b8fab;
+
+    box-shadow:
+        0 0 0 3px rgba(11, 143, 171, 0.10);
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.form-submit {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 45px 25px;
+}
+
+.dashboard-header {
+    margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+    color: #12344d;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: #64748b;
+}
+
+
+/* =========================================
+   DASHBOARD CARDS
+========================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+    margin-bottom: 35px;
+}
+
+.dashboard-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5edf3;
+
+    box-shadow:
+        0 8px 25px rgba(30, 70, 90, 0.06);
+
+    transition: 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(30, 70, 90, 0.10);
+}
+
+.dashboard-card .icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    background: #eaf7fa;
+
+    color: #0b7fab;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.dashboard-card h3 {
+    color: #334155;
+    margin-bottom: 5px;
+}
+
+.dashboard-card p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section {
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 14px;
+
+    border: 1px solid #e5edf3;
+
+    box-shadow:
+        0 8px 25px rgba(30, 70, 90, 0.05);
+
+    margin-bottom: 25px;
+}
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.section-title h2 {
+    font-size: 21px;
+    color: #12344d;
+}
+
+
+/* =========================================
+   DOCTOR CARDS
+========================================= */
+
+.doctors-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    padding: 0 25px;
+}
+
+.doctor-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border: 1px solid #e4edf2;
+
+    box-shadow:
+        0 8px 25px rgba(30, 70, 90, 0.06);
+
+    transition: 0.2s;
+}
+
+.doctor-card:hover {
+    transform: translateY(-4px);
+}
+
+.doctor-avatar {
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #eaf7fa;
+
+    color: #0b7fab;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    margin-bottom: 18px;
+}
+
+.doctor-card h3 {
+    color: #12344d;
+    margin-bottom: 5px;
+}
+
+.specialization {
+    color: #0b8f8a;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+}
+
+.doctor-info {
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+}
+
+thead {
+    background: #f1f7fa;
+}
+
+th {
+    text-align: left;
+
+    padding: 14px 16px;
+
+    color: #334155;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+td {
+    padding: 15px 16px;
+
+    border-top: 1px solid #edf2f5;
+
+    color: #475569;
+
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background: #fafcfd;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff5d9;
+    color: #9a6b00;
+}
+
+.status-approved {
+    background: #e5f7ee;
+    color: #14764f;
+}
+
+.status-completed {
+    background: #e8f1ff;
+    color: #285ca8;
+}
+
+.status-cancelled {
+    background: #fdeaea;
+    color: #b43c3c;
+}
+
+
+/* =========================================
+   BOOK APPOINTMENT
+========================================= */
+
+.booking-container {
+    max-width: 850px;
+
+    margin: 45px auto;
+
+    padding: 0 20px;
+}
+
+.booking-card {
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 16px;
+
+    border: 1px solid #e3edf2;
+
+    box-shadow:
+        0 12px 35px rgba(30, 70, 90, 0.08);
+}
+
+.doctor-summary {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding-bottom: 25px;
+
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #e8eef2;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    margin-top: 50px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background: #12344d;
+
+    color: #cbd8df;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.alert {
+    padding: 13px 16px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+.alert-success {
+    background: #e8f7ef;
+    color: #176b47;
+}
+
+.alert-error {
+    background: #fdeaea;
+    color: #a53636;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 60px 25px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .dashboard-grid,
+    .doctors-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a:not(.nav-btn) {
+        display: none;
+    }
+
+    .dashboard-grid,
+    .doctors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+/* =========================================
+   APPOINTMENT PAGE
+========================================= */
+
+.appointment-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 25px;
+}
+
+.appointment-header {
+    margin-bottom: 30px;
+}
+
+.appointment-header h1 {
+    color: #12344d;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.appointment-header p {
+    color: #64748b;
+}
+
+
+/* Appointment table card */
+
+.appointment-table-card {
+    background: white;
+    border: 1px solid #e3edf2;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0 8px 25px rgba(30, 70, 90, 0.06);
+}
+
+.appointment-table-wrapper {
+    overflow-x: auto;
+}
+
+.appointment-table {
+    min-width: 950px;
+}
+
+
+/* Appointment actions */
+
+.appointment-actions {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.appointment-actions .btn {
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   APPOINTMENT STATUS
+========================================= */
+
+.status-confirmed {
+    background: #e5f7ee;
+    color: #14764f;
+}
+
+.status-pending {
+    background: #fff5d9;
+    color: #9a6b00;
+}
+
+.status-completed {
+    background: #e8f1ff;
+    color: #285ca8;
+}
+
+.status-cancelled {
+    background: #fdeaea;
+    color: #b43c3c;
+}
+
+
+/* =========================================
+   APPOINTMENT BUTTONS
+========================================= */
+
+.btn-confirm {
+    background: #15966d;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background: #117c5a;
+}
+
+.btn-complete {
+    background: #285ca8;
+    color: white;
+}
+
+.btn-complete:hover {
+    background: #204c8d;
+}
+
+.btn-cancel {
+    background: #dc4c4c;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background: #bb3d3d;
+}
+
+
+/* =========================================
+   EMPTY APPOINTMENT
+========================================= */
+
+.no-appointments {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.no-appointments h2 {
+    color: #12344d;
+    margin-bottom: 8px;
+}
+
+.no-appointments p {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   BOOKING PAGE
+========================================= */
+
+.booking-container {
+    max-width: 900px;
+    margin: 45px auto;
+    padding: 0 25px;
+}
+
+.booking-card {
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid #e3edf2;
+    box-shadow: 0 12px 35px rgba(30, 70, 90, 0.08);
+}
+
+
+/* Doctor information at top */
+
+.doctor-summary {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding-bottom: 25px;
+    margin-bottom: 28px;
+
+    border-bottom: 1px solid #e8eef2;
+}
+
+.doctor-summary .doctor-avatar {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.doctor-summary h2 {
+    color: #12344d;
+    margin-bottom: 4px;
+}
+
+.doctor-summary p {
+    color: #0b8f8a;
+    font-weight: 600;
+}
+
+
+/* Booking form */
+
+.booking-form {
+    margin-top: 10px;
+}
+
+.booking-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+/* Booking information */
+
+.booking-info {
+    background: #eef9fc;
+    color: #386477;
+
+    padding: 14px 16px;
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   CONFLICT MESSAGE
+========================================= */
+
+.conflict-message {
+    background: #fdeaea;
+    color: #a53636;
+
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ADMIN / DOCTOR ACTION AREA
+========================================= */
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   RESPONSIVE APPOINTMENTS
+========================================= */
+
+@media (max-width: 700px) {
+
+    .appointment-page {
+        padding: 35px 15px;
+    }
+
+    .booking-container {
+        padding: 0 15px;
+    }
+
+    .booking-card {
+        padding: 25px 20px;
+    }
+
+    .booking-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-summary {
+        align-items: flex-start;
+    }
+
+}

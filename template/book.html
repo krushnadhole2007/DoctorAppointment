@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Appointment - MediCare</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <a href="{{ url_for('dashboard') }}" class="logo">
+        Medi<span>Care</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('patient_dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('doctors') }}">
+            Doctors
+        </a>
+
+        <a href="{{ url_for('appointments') }}">
+            Appointments
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="nav-btn">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="booking-container">
+
+    <div class="booking-card">
+
+        <div class="doctor-summary">
+
+            <div class="doctor-avatar">
+                👨‍⚕️
+            </div>
+
+            <div>
+
+                <h2 style="color:#12344d;">
+                    Dr. {{ doctor[1] }}
+                </h2>
+
+                <p style="color:#0b8f8a; font-weight:600;">
+                    {{ doctor[2] }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <h2 style="color:#12344d; margin-bottom:8px;">
+            Book Appointment
+        </h2>
+
+        <p style="color:#64748b; margin-bottom:25px;">
+            Select your preferred date and time.
+        </p>
+
+
+        <form method="POST"
+              action="{{ url_for('book_appointment',
+                                 doctor_id=doctor[0]) }}">
+
+
+            <div class="form-group">
+
+                <label>
+                    Appointment Date
+                </label>
+
+                <input
+                    type="date"
+                    name="appointment_date"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Appointment Time
+                </label>
+
+                <input
+                    type="time"
+                    name="appointment_time"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Reason for Visit
+                </label>
+
+                <textarea
+                    name="reason"
+                    placeholder="Briefly describe the reason for your appointment..."
+                    required></textarea>
+
+            </div>
+
+
+            <div style="display:flex; gap:12px;">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    Confirm Appointment
+
+                </button>
+
+                <a href="{{ url_for('doctors') }}"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<footer class="footer">
+
+    © 2026 MediCare Doctor Appointment System
+
+</footer>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
